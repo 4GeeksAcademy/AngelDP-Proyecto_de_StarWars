@@ -20,6 +20,7 @@ export const Category = () => {
                 const data = await response.json();
                 console.log(data)
                 dispatch({ type: "set_items", payload: data.results });
+                
             } catch (error) {
                 console.log(error);
             }

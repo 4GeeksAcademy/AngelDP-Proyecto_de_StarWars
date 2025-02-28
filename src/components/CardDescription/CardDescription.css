@@ -1,0 +1,61 @@
+.center-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;          
+    
+}
+
+.cardDescription {
+    width: auto;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6));
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-family: 'Star Jedi', sans-serif;
+    font-size: 1.5rem;
+    color: #f5f5f5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para la lista de propiedades */
+.list-properties {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-properties li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.list-properties li strong {
+    color: #ffeb3b; /* Color amarillo tipo Star Wars */
+}
+
+/* Estilo para los enlaces (URLs) */
+.list-properties li a {
+    color: #ffeb3b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.list-properties li a:hover {
+    color: #ffffff;
+}

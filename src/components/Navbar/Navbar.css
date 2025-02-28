@@ -1,0 +1,79 @@
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7) !important; 
+    border-bottom: 1px solid #00ffff;
+    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
+    z-index: 10;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+    
+}
+
+.dropdown-toggle{
+    background: #000000;
+    border: 1px solid #00ffff;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+.dropdown-toggle:hover {
+    background-color: rgba(0, 13, 26, 0.9);
+    border: 1px solid #00ffff;
+}
+
+
+.dropdown-menu {
+    background-color: rgba(0, 13, 26, 0.9);
+    border: 1px solid #00ffff;
+}
+
+.dropdown-item {
+    display: flex;
+    color: #ffffff;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: 95%;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+}
+
+.btn-outline-success {
+    color: #00ffff;
+    border-color: #00ffff;
+}
+
+.btn-outline-success:hover {
+    background-color: #00ffff;
+    color: #000;
+}
+
+.starwarsLogo {
+    background: #000000;
+    border: 1px solid #00ffff;
+    color: #ffffff;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+.starwarsLogo:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}

@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import useGlobalReducer from "../hooks/useGlobalReducer";
 import { useEffect, useState } from "react";
+import { CardDescription } from "../components/CardDescription/CardDescription";
 
 export const ItemDescription = () => {
 
     const { category, id } = useParams();
-    const { store } = useGlobalReducer();
 
     const [properties, setProperties] = useState([])
 
     useEffect(() => {
+
 
         const getItemDescription = async () => {
 
@@ -29,7 +29,7 @@ export const ItemDescription = () => {
                 console.log(properties)
 
                 setProperties(properties)
-                
+
 
             } catch (error) {
                 console.log(error)
@@ -42,12 +42,12 @@ export const ItemDescription = () => {
 
 
     return (
-        <ul>
-            {Object.entries(properties).map(([key, value], index) => (
-                <li key={index}>
-                    <strong>{key}:</strong> {value}
-                </li>
-            ))}
-        </ul>
-    )
-}
+
+        <div className="center-container">
+            <CardDescription
+                properties={properties}
+            />
+        </div>
+
+    );
+};

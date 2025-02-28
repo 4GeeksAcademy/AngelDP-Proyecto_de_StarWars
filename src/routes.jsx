@@ -6,8 +6,8 @@ import {
     Route,
 } from "react-router-dom";
 
-import { Layout } from "./pages/Layout";
-import { Home } from "./pages/Home";
+import { Layout } from "./pages/Layout/Layout";
+import { Home } from "./pages/Home/Home";
 import { Category } from "./pages/Category";
 import { ItemDescription } from "./pages/ItemDescription";
 

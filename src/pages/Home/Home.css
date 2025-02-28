@@ -1,0 +1,31 @@
+.categories {
+    position: relative;
+    min-height: 60vh; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px;
+}
+
+.category-btn {
+    position: absolute;
+    background: #1b263b;
+    border: 1px solid #00ffff;
+    color: #ffffff;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+.category-btn:hover {
+    background: #00ffff;
+    color: #000;
+    transform: scale(1.2);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+}

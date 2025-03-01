@@ -23,22 +23,24 @@ export const Home = () => {
         };
 
         getCategories();
-        
+
     }, []);
 
     const fixedPositions = [
-        { top: "20%", left: "35%" }, 
-        { top: "30%", left: "55%" },
-        { top: "40%", left: "45%" },
-        { top: "50%", left: "60%" },
-        { top: "60%", left: "40%" },
-        { top: "70%", left: "50%" },
+        { top: "25%", left: "60%" },
+        { top: "40%", left: "30%" },
+        { top: "50%", left: "55%" },
+        { top: "70%", left: "40%" },
+        { top: "85%", left: "55%" },
     ];
 
     return (
         <div className="categories">
             {store.categories.map((category, index) => {
                 const position = fixedPositions[index % fixedPositions.length];
+
+                if (category === "films") return null;
+
                 return (
                     <Link
                         key={index}

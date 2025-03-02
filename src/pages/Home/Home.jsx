@@ -24,7 +24,17 @@ export const Home = () => {
 
         getCategories();
 
+        if (window.location.pathname === '/') {
+            dispatch({ type: "set_selected_category", payload: null });
+        }
+
     }, []);
+
+    const handleCategoryClick = (category) => {
+
+        dispatch({ type: "set_selected_category", payload: category });
+
+    };
 
     const fixedPositions = [
         { top: "25%", left: "60%" },
@@ -47,6 +57,7 @@ export const Home = () => {
                         to={`/category/${category}`}
                         className="category-btn"
                         style={position}
+                        onClick={() => handleCategoryClick(category)}
                     >
                         {category}
                     </Link>

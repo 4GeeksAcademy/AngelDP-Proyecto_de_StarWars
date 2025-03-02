@@ -36,6 +36,31 @@ export const ItemCard = () => {
 
     }
 
+    const handleFav = (item) => {
+
+        if (item) {
+
+            const newFav = {
+
+                name: item.name,
+                category: category,
+                id: item.uid
+
+            };
+
+
+            const exists = store.favorites.some(
+                fav => fav.name === newFav.name && fav.id === newFav.id && fav.category === newFav.category
+            );
+
+            if (!exists) {
+
+                dispatch({ type: "add_favorites", payload: newFav });
+
+            }
+        };
+    };
+
     return (
         <ul className="list-unstyled d-flex flex-wrap gap-4 justify-content-center mt-5">
             {store.items.map((item, index) => (
@@ -46,7 +71,6 @@ export const ItemCard = () => {
                     <img
                         src={handleImg(category, item.uid)}
                         className="card-img-top"
-                        alt={item.name}
                     />
                     <div className="card-body d-flex flex-column align-items-center">
 
@@ -65,14 +89,11 @@ export const ItemCard = () => {
                             <button
 
                                 className="btn btn-warning text-dark py-2 px-4 mt-auto ms-2"
-                                onClick={() => dispatch({ type: "set_favorites", payload: item.name })}
+                                onClick={() => handleFav(item)}
                             >
                                 Favs
                             </button>
                         </div>
-
-
-
                     </div>
                 </li>
             ))}

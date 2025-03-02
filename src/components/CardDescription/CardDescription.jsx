@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './CardDescription.css';
 import { useParams } from 'react-router-dom';
 import useGlobalReducer from '../../hooks/useGlobalReducer';
@@ -7,22 +7,6 @@ export const CardDescription = () => {
 
     const { store, dispatch } = useGlobalReducer();
     const { category, id } = useParams();
-
-
-    const [favorites, setFavorites] = useState(() => {
-
-        const saved = localStorage.getItem('favorites');
-        return saved ? JSON.parse(saved) : [];
-
-    });
-
-
-    useEffect(() => {
-
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-
-    }, [favorites]);
-
 
 
     useEffect(() => {
@@ -62,6 +46,22 @@ export const CardDescription = () => {
             return `https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/characters/${uid}.jpg`;
         }
 
+        if (cat === "starships" && uid === "2") {
+            return "https://lh4.googleusercontent.com/proxy/eoTL6ht_11pN5wTt3-CpHi6VaSloShUzYfB4dqpgWHxOA63koNMZ9NBKDaKkH32qKPvo9NqDknCftn1AGgAAP7yQte2VdBrzod-TaTI-oVZbZ4l-B9gz";
+        }
+
+        if (cat === "planets" && uid === "1") {
+            return "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png/revision/latest?cb=20131214162357";
+        }
+
+        if (cat === "starships" && uid === "3") {
+            return "https://www.super-hobby.es/zdjecia/9/3/4/48314_03609_i_imperial_star_destroyer-1-.jpg";
+        }
+
+        if (cat === "starships" && uid === "17") {
+            return "https://static.wikia.nocookie.net/starwars/images/d/de/NewRepublicVolunteers-SWZ.png/revision/latest?cb=20210110181445";
+        }
+
         return `https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/${cat}/${uid}.jpg`;
     }
 
@@ -79,13 +79,13 @@ export const CardDescription = () => {
             };
 
 
-            const exists = favorites.some(
+            const exists = store.favorites.some(
                 fav => fav.name === newFav.name && fav.category === newFav.category
             );
 
             if (!exists) {
 
-                setFavorites([...favorites, newFav]);
+                dispatch({ type: "add_favorites", payload: newFav});
 
             }
         };
@@ -107,7 +107,7 @@ export const CardDescription = () => {
                             {store.properties
                                 ? Object.entries(store.properties).map(([key, value], index) => {
 
-                                    return key !== "created" && key !== "edited" && key !== "url" && key !== "homeworld" && key !== "films" && key !== "pilots" ? (
+                                    return key !== "created" && key !== "edited" && key !== "url" && key !== "homeworld" && key !== "films" && key !== "pilots" && key !== "people"? (
                                         <li key={index} className="mb-2">
                                             <strong>{key}:</strong> {value}
                                         </li>

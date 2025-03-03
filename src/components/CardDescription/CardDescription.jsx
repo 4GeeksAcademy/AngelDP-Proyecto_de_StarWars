@@ -85,12 +85,14 @@ export const CardDescription = () => {
 
             if (!exists) {
 
-                dispatch({ type: "add_favorites", payload: newFav});
+                dispatch({ type: "add_favorites", payload: newFav });
 
             }
         };
     };
 
+    const isFavorite = store.favorites.some(fav => fav.name === store.properties?.name && fav.category === category);
+    
     return (
         <div className='card-container'>
             <div className="cardDescription text-white bg-transparent border-0">
@@ -107,7 +109,7 @@ export const CardDescription = () => {
                             {store.properties
                                 ? Object.entries(store.properties).map(([key, value], index) => {
 
-                                    return key !== "created" && key !== "edited" && key !== "url" && key !== "homeworld" && key !== "films" && key !== "pilots" && key !== "people"? (
+                                    return key !== "created" && key !== "edited" && key !== "url" && key !== "homeworld" && key !== "films" && key !== "pilots" && key !== "people" ? (
                                         <li key={index} className="mb-2">
                                             <strong>{key}:</strong> {value}
                                         </li>
@@ -118,8 +120,9 @@ export const CardDescription = () => {
                         <button
                             className="btn btn-warning text-dark py-2 px-4 mt-auto ms-2"
                             onClick={handleFav}
+                            disabled={isFavorite}
                         >
-                            Add to Favorites
+                            {isFavorite ? "Added" : "Add to Favorites"}
                         </button>
                     </div>
                 </div>

@@ -75,6 +75,7 @@ export const ItemCard = () => {
         };
     };
 
+    
     return (
         <ul className="list-unstyled d-flex flex-wrap gap-4 justify-content-center mt-5">
             {store.items.map((item, index) => {

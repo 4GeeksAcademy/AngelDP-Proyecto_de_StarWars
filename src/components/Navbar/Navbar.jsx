@@ -113,7 +113,7 @@ export const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
+                <div className="collapse navbar-collapse d-flex ">
 
                     {showElements && (
                         <>
@@ -121,7 +121,7 @@ export const Navbar = () => {
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li className="nav-item dropdown">
                                         <button
-                                            className="nav-link dropdown-toggle btn"
+                                            className="nav-link dropdown-toggle btn p-3"
                                             type="button"
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
@@ -153,7 +153,7 @@ export const Navbar = () => {
                                 </ul>
                             </div>
 
-                            <div className="d-flex justify-content-around w-100">
+                            <div className="d-flex justify-content-end w-100 m-4">
 
                                 {store.categories && store.categories.map((category, index) => {
                                     if (category === "films") return null;
@@ -161,7 +161,7 @@ export const Navbar = () => {
                                     return (
                                         <button
                                             key={index}
-                                            className={`btn btn-outline-success slide-in-element slide-delay-${index % 3 + 1} ${elementsVisible ? 'visible' : 'slide-out-element'} ${store.selectedCategory === category ? 'active' : ''}`}
+                                            className={`btn btn-outline-success m-1 slide-in-element slide-delay-${index % 3 + 1} ${elementsVisible ? 'visible' : 'slide-out-element'} ${store.selectedCategory === category ? 'active' : ''}`}
                                             onClick={() => handleCategoryClick(category)}
                                         >
                                             {category}

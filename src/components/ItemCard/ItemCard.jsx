@@ -10,6 +10,15 @@ export const ItemCard = () => {
     const { store, dispatch } = useGlobalReducer();
     const { category } = useParams();
 
+
+
+    const isInFavorites = (item) => {
+        return store.favorites.some(
+            fav => fav.name === item.name && fav.id === item.uid && fav.category === category
+        );
+    };
+
+
     const handleImg = (cat, uid) => {
 
         if (cat === "planets" && uid === "1") {
@@ -51,52 +60,63 @@ export const ItemCard = () => {
 
             const exists = store.favorites.some(
                 fav => fav.name === newFav.name && fav.id === newFav.id && fav.category === newFav.category
+
             );
+
+            if (exists) {
+                setDisable(true);
+            }
 
             if (!exists) {
 
                 dispatch({ type: "add_favorites", payload: newFav });
-
+                setDisable(false);
             }
         };
     };
 
     return (
         <ul className="list-unstyled d-flex flex-wrap gap-4 justify-content-center mt-5">
-            {store.items.map((item, index) => (
-                <li
-                    key={index}
-                    className="card text-white bg-transparent border-0"
-                >
-                    <img
-                        src={handleImg(category, item.uid)}
-                        className="card-img-top"
-                    />
-                    <div className="card-body d-flex flex-column align-items-center">
+            {store.items.map((item, index) => {
 
-                        <h5 className="card-title text-center mb-3">
-                            {item.name}
-                        </h5>
+                const isFavorite = isInFavorites(item);
 
-                        <div>
-                            <Link
-                                to={`/category/${category}/${item.uid}`}
-                                className="btn btn-light text-dark py-2 px-4 mt-auto "
-                            >
-                                See more...
-                            </Link>
+                return (
 
-                            <button
+                    <li
+                        key={index}
+                        className="card text-white bg-transparent border-0"
+                    >
+                        <img
+                            src={handleImg(category, item.uid)}
+                            className="card-img-top"
+                        />
+                        <div className="card-body d-flex flex-column align-items-center">
 
-                                className="btn btn-warning text-dark py-2 px-4 mt-auto ms-2"
-                                onClick={() => handleFav(item)}
-                            >
-                                Favs
-                            </button>
+                            <h5 className="card-title text-center mb-3">
+                                {item.name}
+                            </h5>
+
+                            <div>
+                                <Link
+                                    to={`/category/${category}/${item.uid}`}
+                                    className="btn btn-light text-dark py-2 px-4 mt-auto "
+                                >
+                                    See more...
+                                </Link>
+
+                                <button
+                                    className={`btn btn-warning text-dark py-2 px-4 mt-auto ms-2 ${isFavorite ? "disabled-btn" : ""}`}
+                                    onClick={() => handleFav(item)}
+                                    disabled={isFavorite}
+                                >
+                                    {isFavorite ? "Added" : "Favs"}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            ))}
+                    </li>
+                )
+            })}
         </ul>
     );
 };

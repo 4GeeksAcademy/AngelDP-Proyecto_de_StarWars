@@ -1,6 +1,6 @@
 .categories {
     position: relative;
-    min-height: 60vh; 
+    min-height: 60vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -21,6 +21,8 @@
     transition: all 0.3s ease;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
     text-decoration: none;
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
 }
 
 .category-btn:hover {
@@ -28,4 +30,15 @@
     color: #000;
     transform: scale(1.2);
     box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }

@@ -177,13 +177,13 @@ export const Navbar = () => {
                                     <input
                                         className="form-control me-2"
                                         type="search"
-                                        placeholder="Search"
+                                        placeholder={`Search ${store.selectedCategory}`}
                                         aria-label="Search"
                                         value={search}
                                         onChange={handleSearchChange}
                                     />
                                     <button className="btn btn-outline-success" type="submit">
-                                        Search
+                                        Search 
                                     </button>
 
                                     {suggestions.length > 0 && (

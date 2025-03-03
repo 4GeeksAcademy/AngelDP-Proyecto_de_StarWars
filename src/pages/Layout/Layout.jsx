@@ -22,7 +22,7 @@ export const Layout = () => {
                 container.appendChild(star);
             }
         };
-        createStars(150);
+        createStars(350);
     }, []);
 
     return (

@@ -92,7 +92,7 @@ export const CardDescription = () => {
     };
 
     const isFavorite = store.favorites.some(fav => fav.name === store.properties?.name && fav.category === category);
-    
+
     return (
         <div className='card-container'>
             <div className="cardDescription text-white bg-transparent border-0">

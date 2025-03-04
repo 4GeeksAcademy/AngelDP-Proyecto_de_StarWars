@@ -1,17 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import { ItemCard } from "../components/ItemCard/ItemCard";
+import { Spinner } from "../components/Spinner/Spinner";
 
 export const Category = () => {
 
     const { dispatch } = useGlobalReducer();
     const { category } = useParams();
+    const [cargando, setCargando] = useState(true)
 
 
     useEffect(() => {
 
-
+        setCargando(true);
+        dispatch({ type: "set_items", payload: [] });
 
         const getItems = async () => {
             try {
@@ -22,6 +25,9 @@ export const Category = () => {
                 const data = await response.json();
 
                 dispatch({ type: "set_items", payload: data.results });
+
+                setCargando(false)
+
             } catch (error) {
                 console.log(error);
             }
@@ -33,9 +39,16 @@ export const Category = () => {
 
 
     useEffect(() => {
-        
+
         dispatch({ type: "set_selected_category", payload: category });
     }, [category, dispatch]);
+
+    if (cargando) {
+        return (
+            <Spinner />
+        )
+    }
+
 
     return (
         <ItemCard />

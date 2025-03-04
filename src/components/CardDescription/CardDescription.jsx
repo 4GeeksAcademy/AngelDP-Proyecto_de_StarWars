@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CardDescription.css';
 import { useParams } from 'react-router-dom';
 import useGlobalReducer from '../../hooks/useGlobalReducer';
+import { Spinner } from '../Spinner/Spinner';
 
 export const CardDescription = () => {
 
     const { store, dispatch } = useGlobalReducer();
     const { category, id } = useParams();
+    const [cargando, setCargando] = useState(true)
 
 
     useEffect(() => {
@@ -30,6 +32,7 @@ export const CardDescription = () => {
 
                 dispatch({ type: "set_properties", payload: properties })
 
+                setCargando(false)
 
             } catch (error) {
                 console.log(error)
@@ -39,6 +42,13 @@ export const CardDescription = () => {
         getItemDescription();
     }, [id, category]);
 
+
+    if (cargando) {
+        
+        return (
+            <Spinner />
+        );
+    }
 
     const handleImg = (cat, uid) => {
 

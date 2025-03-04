@@ -12,7 +12,6 @@ export const Spinner = () => {
                 <div className="spinner">
                     <div className="spinner-inner"></div>
                 </div>
-                <p>Cargando {category}...</p>
             </div>
         </>
     );
